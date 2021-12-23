@@ -1,0 +1,25 @@
+{
+  "name": "@tiyafe/awesome-mixins",
+  "version": "0.0.3",
+  "description": "Some Activities Sass mixins for your needs",
+  "author": "chenshujuan@lizhi.fm",
+  "license": "MIT",
+  "main": "scss/index.scss",
+  "scripts": {
+    "start": "sass --watch scss/index.scss:dist/index.css",
+    "pretty": "npx prettier --write \"./**/*.{js,jsx,json,scss,less,css}\"",
+    "prepare": "npx --no-install husky install ./config/husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.lizhi.fm/tiya-fe/awesome-mixins.git"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.4.1",
+    "sass": "^1.43.4"
+  }
+}

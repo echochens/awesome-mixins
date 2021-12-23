@@ -1,0 +1,52 @@
+/**
+  * 按钮按下效果
+  * $pushOffset：y軸偏移量，默认为：1px
+  */
+@mixin active-button($pushOffset: 1px) {
+  display: inline-block;
+  cursor: pointer;
+  &:active {
+    transform: translateY($pushOffset);
+  }
+}
+
+/**
+  * 三層按鈕
+  * $offset：y軸偏移值，默认为：6px
+  * $radius：圓角，默认为：26px
+  */
+@mixin special-btn($offset: 6px, $radius: 26px) {
+  $halfOffset: $offset / 2 * -1;
+
+  @include decorate-text;
+  box-sizing: border-box;
+  border-radius: $radius;
+  border: 1px solid #272dbd;
+  background-image: linear-gradient(to bottom, #fff, #bafae7);
+  position: relative;
+  margin-top: $offset;
+  transition: all 0.1s linear;
+  z-index: 1;
+  box-shadow: 0 0 2px #fff;
+
+  &::after {
+    @include flex-center;
+    content: "";
+    height: 100%;
+    width: calc(100% + 2px);
+    border-radius: $radius;
+    position: absolute;
+    text-align: center;
+    border: 1px solid #272dbd;
+    transform: translate(-1px, -$offset);
+    box-sizing: border-box;
+  }
+
+  &:active {
+    filter: brightness(0.95);
+
+    &::after {
+      transform: translate(-1px, $halfOffset);
+    }
+  }
+}

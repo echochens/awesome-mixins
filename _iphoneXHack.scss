@@ -1,0 +1,25 @@
+/**
+  * 用于适配iphoneX等具有额外区域（safe-area）的设备
+  * $direction: 方向
+  * $val：设计稿数值
+  */
+
+@mixin adp-ipx($direction, $val) {
+  #{$direction}: $val;
+  #{$direction}: calc(constant(safe-area-inset-#{$direction}) + #{$val});
+  #{$direction}: calc(env(safe-area-inset-#{$direction}) + #{$val});
+}
+
+@mixin adp-ipx-padding($direction, $val) {
+  padding-#{$direction}: $val;
+  padding-#{$direction}: calc(
+    constant(safe-area-inset-#{$direction}) + #{$val}
+  );
+  padding-#{$direction}: calc(env(safe-area-inset-#{$direction}) + #{$val});
+}
+
+@mixin adp-ipx-margin($direction, $val) {
+  margin-#{$direction}: $val;
+  margin-#{$direction}: calc(constant(safe-area-inset-#{$direction}) + #{$val});
+  margin-#{$direction}: calc(env(safe-area-inset-#{$direction}) + #{$val});
+}

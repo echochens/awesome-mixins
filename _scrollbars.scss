@@ -1,0 +1,32 @@
+/**
+  * 定制化滾動條樣式
+  * $size： 水平滾動條的高度以及垂直滾動條的寬度
+  * $foreground-color： 滾動條的顏色
+  * $background-color： [mix($foreground-color, white, 50%)] - Scrollbar's color
+  */
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  overflow: scroll;
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}

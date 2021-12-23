@@ -1,0 +1,70 @@
+/**
+  * flex 布局复用
+**/
+%basic-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/**
+  * 水平垂直居中
+**/
+@mixin flex-center {
+  @extend %basic-flex-center;
+}
+/**
+  * 水平垂直居中-定位
+**/
+@mixin abs-center() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+/**
+  * 水平居中
+**/
+@mixin abs-h-center() {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  @content;
+}
+/**
+  * 水平居中
+**/
+@mixin flex-justify($jcontent: "center") {
+  display: flex;
+  justify-content: $jcontent;
+}
+/**
+  * 垂直居中
+**/
+@mixin abs-center($acontent: "center") {
+  display: flex;
+  align-items: $acontent;
+}
+
+//
+@mixin abs-full {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+@mixin fixed-center {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin fixed-full {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}

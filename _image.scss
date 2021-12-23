@@ -1,0 +1,46 @@
+%basic-background-image {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+/**
+  * 防止圖片拉伸
+**/
+@mixin had-img {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+/**
+ * 背景图片
+ * $url：圖片名稱
+ * $suffix：圖片後綴 ，默認值：.png
+ * $path：圖片路徑 ，默認值：~@/assets/img/
+ */
+@mixin bg($url: "", $suffix: ".png", $path: "~@/assets/img/") {
+  $url: $path + $url + $suffix;
+  @extend %basic-background-image;
+  background-image: url($url);
+  @content;
+}
+
+/**
+ * cdn背景图片
+ * $url：圖片名稱
+ * $suffix：圖片後綴 ，默認值：.png
+ * $path：圖片路徑 ，默認值：~@/assets/img/
+ */
+@mixin cdnBg($url: "", $suffix: ".png") {
+  @if $_cdnImagePath == "" {
+    @error "$_cdnImagePath must be preset in global config.";
+  }
+
+  $url: $_cdnImagePath + $url + $suffix;
+  @extend %basic-background-image;
+  background-image: url($url);
+  @content;
+}

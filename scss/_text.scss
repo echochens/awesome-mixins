@@ -1,0 +1,52 @@
+/**
+  * 文本溢出隐藏
+  * $rowCount：显示行数，默认为：1（最小为：1）
+  */
+@mixin ellipsis($rowCount: 1) {
+  // 单行文本溢出
+  @if $rowCount <=1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  // 多行文本溢出
+  @else {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    word-break: break-all; // 允许在单词内换行。
+    -webkit-line-clamp: $rowCount; // 限制在一个块元素显示的文本的行数。
+    -webkit-box-orient: vertical; // 设置或检索伸缩盒对象的子元素的排列方式
+  }
+}
+/**
+  * data-text文本描边效果
+  * $bg：描邊顏色，默认为：#fff
+  * $weight：描邊寬度
+  * $X：x偏移量
+  * $Y：y偏移量
+  */
+@mixin stroke-text($bg: #fff, $weight: 4px, $X: 0, $Y: 0) {
+  position: relative;
+  z-index: 0;
+
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    left: $X;
+    top: $Y;
+    -webkit-text-stroke: $bg $weight;
+    z-index: -1;
+  }
+}
+/**
+  * 文本描边+陰影效果
+  * $textcolor：描邊顏色，默认为：#FFFFED
+  * $color：shadow顏色
+  */
+@mixin decorate-text($textcolor: #ffffed, $color: #1566ef) {
+  -webkit-text-stroke: 0.5px $color;
+  color: $textcolor;
+  text-shadow: 0 1.5px $color;
+  font-family: "SFProRounded-Black";
+}
